@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+	<mapping wildcard="true">
+		<class-a>com.mz.phoneBook.model.City</class-a>
+		<class-b>com.mz.phoneBook.view.loadView.CityLoad</class-b>
+		<field>
+			<a>state.id</a>
+			<b>StateId</b>
+		</field>
+		<field>
+			<a>state.name</a>
+			<b>stateName</b>
+		</field>
+	</mapping>
+</mappings>
