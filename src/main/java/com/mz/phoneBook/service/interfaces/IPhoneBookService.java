@@ -10,5 +10,6 @@ public interface IPhoneBookService extends IGenericService<PhoneBook , Integer> 
 
     List<PhoneBookDao> searchByFirstNameOrLastName (String name);
     List<PhoneBookDaoView> searchByCityName (String cityName);
+    List<PhoneBookDao> searchByPhoneNumber (Long phoneNumber);
 
 }

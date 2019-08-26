@@ -104,4 +104,9 @@ public class PhoneBookController {
     public List<PhoneBookDaoView> searchByCityName (@RequestParam String cityName){
         return phoneBookService.searchByCityName(cityName);
     }
+
+    @RequestMapping(value = "searchByPhoneNumber" , method = RequestMethod.POST)
+    public List<PhoneBookDao> searchByPhoneNumber (@RequestParam Long phoneNumber){
+        return phoneBookService.searchByPhoneNumber(phoneNumber);
+    }
 }

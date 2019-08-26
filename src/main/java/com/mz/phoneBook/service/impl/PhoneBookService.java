@@ -76,4 +76,20 @@ public class PhoneBookService extends GenericService<PhoneBook , Integer> implem
 
         return retValue;
     }
+
+    @Override
+    public List<PhoneBookDao> searchByPhoneNumber(Long phoneNumber) {
+        List<PhoneBookDao> retValue = new ArrayList<PhoneBookDao>();
+        Object[] temp = phoneBookRepository.searchByPhoneNumber(phoneNumber);
+        for (Object ojb : temp){
+            Object[] tem = (Object[]) ojb;
+            PhoneBookDao phoneBookDao = new PhoneBookDao();
+            phoneBookDao.setfName(tem[0].toString());
+            phoneBookDao.setlName(tem[1].toString());
+            phoneBookDao.setPhone((Long)tem[2]);
+            retValue.add(phoneBookDao);
+        }
+
+        return retValue;
+    }
 }
