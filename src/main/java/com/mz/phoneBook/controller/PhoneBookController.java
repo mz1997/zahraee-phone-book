@@ -4,6 +4,7 @@ import com.mz.phoneBook.model.Pagination;
 import com.mz.phoneBook.model.PhoneBook;
 import com.mz.phoneBook.service.interfaces.IPhoneBookService;
 import com.mz.phoneBook.view.daoView.PhoneBookDao;
+import com.mz.phoneBook.view.daoView.PhoneBookDaoView;
 import com.mz.phoneBook.view.loadView.PhoneBookLoad;
 import com.mz.phoneBook.view.pageView.PhoneBookPage;
 import com.mz.phoneBook.view.postView.PhoneBookPost;
@@ -98,4 +99,9 @@ public class PhoneBookController {
         return phoneBookService.searchByFirstNameOrLastName(name);
     }
 
+
+    @RequestMapping(value = "searchByCityName" , method = RequestMethod.POST)
+    public List<PhoneBookDaoView> searchByCityName (@RequestParam String cityName){
+        return phoneBookService.searchByCityName(cityName);
+    }
 }

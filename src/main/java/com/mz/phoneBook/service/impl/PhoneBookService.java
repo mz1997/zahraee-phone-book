@@ -5,6 +5,7 @@ import com.mz.phoneBook.model.PhoneBook;
 import com.mz.phoneBook.service.GenericService;
 import com.mz.phoneBook.service.interfaces.IPhoneBookService;
 import com.mz.phoneBook.view.daoView.PhoneBookDao;
+import com.mz.phoneBook.view.daoView.PhoneBookDaoView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,29 @@ public class PhoneBookService extends GenericService<PhoneBook , Integer> implem
             phoneBookDao.setPhone((Long)tem[2]);
             retValue.add(phoneBookDao);
         }
+
+        return retValue;
+    }
+
+    @Override
+    public List<PhoneBookDaoView> searchByCityName(String cityName) {
+        List<PhoneBookDaoView> retValue =new ArrayList<PhoneBookDaoView>();
+        Object[] temp = phoneBookRepository.searchByCityName(cityName);
+        for (Object ojb : temp){
+            Object[] tem = (Object[]) ojb;
+            PhoneBookDaoView phoneBookDaoView = new PhoneBookDaoView();
+            phoneBookDaoView.setId(tem[0].hashCode());
+            phoneBookDaoView.setfName(tem[1].toString());
+            phoneBookDaoView.setlName(tem[2].toString());
+            phoneBookDaoView.setPhone((Long)tem[3]);
+            phoneBookDaoView.setMail(tem[4].toString());
+            phoneBookDaoView.setAddressId(tem[5].hashCode());
+            phoneBookDaoView.setAddress(tem[6].toString());
+            phoneBookDaoView.setCityId(tem[7].hashCode());
+            phoneBookDaoView.setCity(tem[8].toString());
+            retValue.add(phoneBookDaoView);
+        }
+
 
         return retValue;
     }
