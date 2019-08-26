@@ -3,6 +3,7 @@ package com.mz.phoneBook.controller;
 import com.mz.phoneBook.model.Pagination;
 import com.mz.phoneBook.model.PhoneBook;
 import com.mz.phoneBook.service.interfaces.IPhoneBookService;
+import com.mz.phoneBook.view.daoView.PhoneBookDao;
 import com.mz.phoneBook.view.loadView.PhoneBookLoad;
 import com.mz.phoneBook.view.pageView.PhoneBookPage;
 import com.mz.phoneBook.view.postView.PhoneBookPost;
@@ -90,6 +91,11 @@ public class PhoneBookController {
     {
         PhoneBookLoad retuenValue =  mapper.map(phoneBook ,PhoneBookLoad.class);
         return retuenValue;
+    }
+
+    @RequestMapping(value = "searchByFirstNameOrLastName" , method = RequestMethod.POST)
+    public List<PhoneBookDao> searchByFirstNameOrLastName (@RequestParam String name){
+        return phoneBookService.searchByFirstNameOrLastName(name);
     }
 
 }
